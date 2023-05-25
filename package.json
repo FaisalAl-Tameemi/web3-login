@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@polkadot/api": "10.7.2",
+    "@talismn/connect-ui": "^1.1.1",
+    "@talismn/connect-components": "^1.1.7",
+    "@talismn/connect-wallets": "^1.2.3",
     "@types/node": "20.2.3",
     "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",
