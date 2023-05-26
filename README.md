@@ -4,7 +4,7 @@ A basic app to showcase connecting to a web3 wallet and signing a message to gai
 
 ## Demo
 
-> TODO: insert gif
+> TODO: insert gif / screen recording
 
 ## How It Works
 
@@ -28,7 +28,7 @@ To run this repository locally, follow the steps below:
 
 1. Clone the repo
 2. Install dependencies with `yarn install` or your favourite package manager
-    * Node version is `18.x.x`
+    * Tested with Node version `18.x.x` and `19.x.x`
 3. Install a browser wallet (such as [PolkadotJS](https://polkadot.js.org/extension/) or [Talisman](https://www.talisman.xyz/))
     * Other wallets should also work but haven't been tested.
 4. Open `localhost:3000` on in a browser window
