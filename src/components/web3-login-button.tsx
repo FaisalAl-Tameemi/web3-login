@@ -27,15 +27,13 @@ export default function Web3LoginButton(props: Web3LoginButtonProps) {
                 address: accountAddress,
             }).then(async ({ signature }: { signature: string }) => {
                 // validate signature via API to obtain session
-                const response = await signIn('credentials', {
+                await signIn('credentials', {
                     address: accountAddress,
                     message,
                     signature,
                     redirect: true,
                     callbackUrl: '/secrets'
                 })
-
-                console.log('response', response)
             })
         }
     }, [wallet, accounts, props.message])
