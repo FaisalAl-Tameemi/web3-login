@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@polkadot/api": "10.7.2",
-    "@talismn/connect-ui": "^1.1.1",
     "@talismn/connect-components": "^1.1.7",
+    "@talismn/connect-ui": "^1.1.1",
     "@talismn/connect-wallets": "^1.2.3",
     "@types/node": "20.2.3",
     "@types/react": "18.2.7",
@@ -19,8 +19,10 @@
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.3",
     "next": "13.4.3",
+    "next-auth": "^4.22.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "yup": "^1.2.0"
   }
 }

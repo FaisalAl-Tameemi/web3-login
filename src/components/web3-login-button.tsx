@@ -1,7 +1,7 @@
-import { WalletSelect } from '@talismn/connect-components'
-import { PolkadotjsWallet, TalismanWallet, Wallet, WalletAccount } from '@talismn/connect-wallets'
-import { cryptoWaitReady } from '@polkadot/util-crypto'
 import { useState, useEffect } from 'react'
+import { signIn } from 'next-auth/react'
+import { WalletSelect } from '@talismn/connect-components'
+import { Wallet, WalletAccount } from '@talismn/connect-wallets'
 import { getMessageToSign } from '@/utils/signature'
 
 interface Web3LoginButtonProps {
@@ -18,14 +18,24 @@ export default function Web3LoginButton(props: Web3LoginButtonProps) {
     // for verification and to obtain a JWT token
     useEffect(() => {
         if (wallet && accounts.length > 0) {
-            let accountAddress = accounts[0].address
+            const accountAddress = accounts[0].address
+            const message = props.message || getMessageToSign(accountAddress)
 
             wallet.signer.signRaw({
                 type: 'payload',
-                data: props.message || getMessageToSign(accountAddress),
+                data: message,
                 address: accountAddress,
             }).then(async ({ signature }: { signature: string }) => {
-                // TODO: validate signature via API to obtain session
+                // validate signature via API to obtain session
+                const response = await signIn('credentials', {
+                    address: accountAddress,
+                    message,
+                    signature,
+                    redirect: true,
+                    callbackUrl: '/secrets'
+                })
+
+                console.log('response', response)
             })
         }
     }, [wallet, accounts, props.message])
