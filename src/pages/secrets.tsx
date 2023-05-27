@@ -1,10 +1,7 @@
-import { Inter } from 'next/font/google'
-import AppHead from '@/components/app-head'
-import styles from '@/styles/Home.module.css'
-import { useSession } from 'next-auth/react'
 import { useState } from 'react'
-
-const inter = Inter({ subsets: ['latin'] })
+import { useSession } from 'next-auth/react'
+import styles from '@/styles/Home.module.css'
+import { Layout } from 'antd'
 
 export default function Secrets() {
   const session = useSession()
@@ -25,13 +22,13 @@ export default function Secrets() {
   }
 
   const Loading = (
-    <main className={`${styles.main} ${inter.className}`}>
+    <main className={`${styles.main}`}>
       Loading
     </main>
   )
 
   const Authed = (
-    <main className={`${styles.main} ${inter.className}`}>
+    <main className={`${styles.main}`}>
       <div>
         <p>
           ✅ Authenticated
@@ -53,14 +50,13 @@ export default function Secrets() {
   )
   
   return (
-    <>
-      <AppHead />
+    <Layout.Content>
       {
         session.status === 'loading' && Loading
       }
       {
         session.status === 'authenticated' && Authed
       }
-    </>
+    </Layout.Content>
   )
 }
