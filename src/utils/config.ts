@@ -11,4 +11,10 @@ export const theme: ThemeConfig = {
         colorPrimary: '#1890ff',
         colorText: '#fff',
     },
+    components: {
+        Table: {
+            colorTextHeading: 'black',
+            colorText: 'black'
+        }
+    }
 }
