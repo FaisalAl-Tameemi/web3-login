@@ -2,6 +2,8 @@
 
 A basic app to showcase connecting to a web3 wallet and signing a message to gain access to a protected page.
 
+_A hosted version of this repo is [available on Vercel](https://web3-login-sigma.vercel.app/)._
+
 ## Demo
 
 > TODO: insert gif / screen recording
@@ -24,16 +26,38 @@ The following steps describe the overall web3 login flow:
 
 ## Local Development
 
-To run this repository locally, follow the steps below:
+To run this repository locally, clone the repo and follow the steps below:
 
-1. Clone the repo
-2. Install dependencies with `yarn install` or your favourite package manager
+1. Install dependencies with your favourite package manager
     * Tested with Node version `18.x.x` and `19.x.x`
-3. Install a browser wallet (such as [PolkadotJS](https://polkadot.js.org/extension/) or [Talisman](https://www.talisman.xyz/))
+
+```
+yarn install
+```
+
+2. Install a browser wallet (such as [PolkadotJS](https://polkadot.js.org/extension/) or [Talisman](https://www.talisman.xyz/))
     * Other wallets should also work but haven't been tested.
-4. Open `localhost:3000` on in a browser window
+
+3. Copy `.env.example` into `.env.local` and add your secrets
+    * [RandomKeygen](https://randomkeygen.com/) can be used to generate random strings
+
+```
+cp .env.example .env.local
+```
+
+4. Run the NextJS application locally
+
+```
+yarn dev
+```
+
+5. Open `localhost:3000` on in a browser window
 
 ## Deployment
 
-> TODO: ...
+This sample application can be deployed on any platform which runs NodeJS.
+
+Below is a one-click deploy button for hosting this application on [Vercel](https://vercel.com) which has built-in support for NextJS applications.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FFaisalAl-Tameemi%2Fweb3-login&env=NEXT_AUTH_SECRET,JWT_SECRET)
 
