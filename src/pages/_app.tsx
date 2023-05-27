@@ -1,11 +1,12 @@
-import '@/styles/globals.css'
-import 'antd/dist/reset.css'
 import { Inter } from 'next/font/google'
 import { SessionProvider } from 'next-auth/react'
 import type { AppProps } from 'next/app'
-import AppHead from '@/components/app-head'
 import { ConfigProvider } from 'antd'
+import AppHead from '@/components/app-head'
 import { theme } from '@/utils/config'
+
+import '@/styles/globals.css'
+import 'antd/dist/reset.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
