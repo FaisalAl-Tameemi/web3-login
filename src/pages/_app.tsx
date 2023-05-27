@@ -13,8 +13,8 @@ const inter = Inter({ subsets: ['latin'] })
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <ConfigProvider theme={theme}>
-      <AppHead />
-      <SessionProvider session={session} basePath='/api/v1'>
+      <SessionProvider session={session} refetchInterval={5} basePath='/api/v1'>
+        <AppHead />
         <Component className={`${inter.className}`} {...pageProps} />
       </SessionProvider>
     </ConfigProvider>
