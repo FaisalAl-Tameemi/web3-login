@@ -6,7 +6,9 @@ _A hosted version of this repo is [available on Vercel](https://web3-login-sigma
 
 ## Demo
 
-> TODO: insert gif / screen recording
+Below is a gif (😅 yes it's grainy) showing a demo of the login flow:
+
+![](./public/demo-labelled.gif)
 
 ## How It Works
 
@@ -64,4 +66,10 @@ Below is a one-click deploy button for hosting this application on [Vercel](http
 
 ## General Notes
 
-> ...
+1. This repo implements the signin logic twice. The first using `NextAuth` plugin and the second using a `jwt` library. This is done for experimentation purposes.
+    * The `NextAuth` flow can be tested using the UI.
+    * The `jwt` flow doesn't enforce session and CSRF. It can be tested via Postman.
+
+2. This repo is not optimized for production
+
+3. Some improvements can be made to make this example closer to being production ready. See the issues in this repo for an idea of what can be improved.
