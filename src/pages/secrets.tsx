@@ -1,23 +1,25 @@
 import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 import { Layout, Spin, Table } from 'antd'
 import { User } from '@/types'
 import styles from '@/styles/Secrets.module.css'
 
 export default function Secrets() {
+  const router = useRouter()
   const session = useSession()
   const [ secretData, setSecretData ] = useState<User[]>([])
 
   useEffect(() => {
     // redirect to home page if session isn't valid
     if (session.status === 'unauthenticated') {
-      window.location.href = '/'
+      router.push('/')
     }
     // attempt to load secret data if session is valid
     if (session.status === 'authenticated' && secretData.length === 0) {
       _loadSecretData()
     }
-  }, [session, secretData])
+  }, [session, secretData, router])
 
   const _loadSecretData = async () => {
     // the auth cookie is automatically included in the headers of the 
