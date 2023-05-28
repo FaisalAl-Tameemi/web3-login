@@ -51,7 +51,15 @@ export default function Web3LoginButton(props: Web3LoginButtonProps) {
 
   if (session.status === 'authenticated') {
     return (
-      <Button type='primary' danger onClick={() => signOut()}>
+      <Button
+        type='primary'
+        danger
+        onClick={() => {
+          setIsSigninLoading(true)
+          signOut()
+        }}
+        loading={isSigninLoading}
+      >
         Signout
       </Button>
     )

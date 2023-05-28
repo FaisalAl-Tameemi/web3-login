@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import { Layout, Spin, Table } from 'antd'
+import { Layout, Row, Space, Spin, Table } from 'antd'
 import { User } from '@/types'
 import styles from '@/styles/Secrets.module.css'
 
@@ -30,9 +30,11 @@ export default function Secrets() {
   }
 
   const LoadingCotnent = (
-    <main>
-      <Spin />
-    </main>
+    <Row className={styles.loadingContainer}>
+      <Space align={'center'}>
+        <Spin size={'large'} />
+      </Space>
+    </Row>
   )
 
   const AuthedContent = (
@@ -41,14 +43,16 @@ export default function Secrets() {
         dataSource={secretData}
         columns={[
           {
-            title: 'Name',
+            title: 'Username',
             dataIndex: 'name',
             key: 'name',
+            width: '30%',
           },
           {
             title: 'Age',
             dataIndex: 'age',
             key: 'age',
+            width: '20%',
           },
           {
             title: 'Address',

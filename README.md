@@ -61,3 +61,7 @@ Below is a one-click deploy button for hosting this application on [Vercel](http
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FFaisalAl-Tameemi%2Fweb3-login&env=NEXT_AUTH_SECRET,JWT_SECRET)
 
+
+## General Notes
+
+> ...
