@@ -19,7 +19,7 @@ export default function AppHead(props: { appName?: string }) {
           <Row justify={'space-between'}>
             <Col>
               <Space align={'center'}>
-                <Typography.Title level={3}>
+                <Typography.Title level={5}>
                   Web3 Login App
                 </Typography.Title>
               </Space>

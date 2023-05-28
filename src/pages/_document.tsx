@@ -1,16 +1,16 @@
-import { createCache, extractStyle, StyleProvider } from '@ant-design/cssinjs';
+import { createCache, extractStyle, StyleProvider } from '@ant-design/cssinjs'
 import Document, {
   DocumentContext,
   Head,
   Html,
   Main,
   NextScript,
-} from 'next/document';
+} from 'next/document'
 
 export default class CustomDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const cache = createCache();
-    const originalRenderPage = ctx.renderPage;
+    const cache = createCache()
+    const originalRenderPage = ctx.renderPage
 
     ctx.renderPage = () =>
       originalRenderPage({
@@ -20,9 +20,9 @@ export default class CustomDocument extends Document {
               <App {...props} />
             </StyleProvider>
           ),
-      });
+      })
 
-    const initialProps = await Document.getInitialProps(ctx);
+    const initialProps = await Document.getInitialProps(ctx)
 
     return {
       ...initialProps,
@@ -35,7 +35,7 @@ export default class CustomDocument extends Document {
           />
         </>
       ),
-    };
+    }
   }
 
   render() {
@@ -47,6 +47,6 @@ export default class CustomDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }

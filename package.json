@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.0.1",
     "@polkadot/api": "10.7.2",
     "@talismn/connect-components": "^1.1.7",
     "@talismn/connect-ui": "^1.1.1",

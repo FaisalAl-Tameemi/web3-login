@@ -1,11 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { getServerSession } from "next-auth/next"
-import { authOptions } from "./[...nextauth]"
 import { getToken } from 'next-auth/jwt'
+import { faker } from '@faker-js/faker'
+import { authOptions } from "./[...nextauth]"
+import { User } from '@/types'
+import { createRandomUser } from '@/utils/data'
 
-type Data = {
-  secret: string
-}
+type Data = User[]
 
 const handler = async (
   req: NextApiRequest,
@@ -30,9 +31,11 @@ const handler = async (
     return res.status(401).end()
   }
 
-  res.status(200).json({
-    secret: 'some secret here'
+  const sampleData = faker.helpers.multiple(createRandomUser, {
+    count: 5,
   })
+
+  res.status(200).json(sampleData)
 }
 
 export default handler

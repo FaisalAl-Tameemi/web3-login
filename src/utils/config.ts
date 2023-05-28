@@ -11,4 +11,16 @@ export const theme: ThemeConfig = {
         colorPrimary: '#1890ff',
         colorText: '#fff',
     },
+    components: {
+        Table: {
+            colorTextHeading: 'black',
+            colorText: 'black'
+        },
+        Button: {
+            colorText: 'black',
+        }
+    }
 }
+
+// TODO: move into .env file
+export const REPO_URL = 'https://github.com/FaisalAl-Tameemi/web3-login'

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { signIn } from 'next-auth/react'
+import { signIn, useSession, signOut } from 'next-auth/react'
 import { WalletSelect } from '@talismn/connect-components'
 import { Wallet, WalletAccount } from '@talismn/connect-wallets'
 import { getMessageToSign } from '@/utils/signature'
@@ -14,6 +14,8 @@ interface Web3LoginButtonProps {
 export default function Web3LoginButton(props: Web3LoginButtonProps) {
   const [wallet, setWallet] = useState<Wallet | null>(null)
   const [accounts, setAccounts] = useState<WalletAccount[]>([])
+  const [ isSigninLoading, setIsSigninLoading ] = useState<boolean>(false)
+  const session = useSession()
 
   // Once both the wallet and the selected account is known
   // we prompt the user to sign a message which will be sent to the API
@@ -28,6 +30,7 @@ export default function Web3LoginButton(props: Web3LoginButtonProps) {
         data: message,
         address: accountAddress,
       }).then(async ({ signature }: { signature: string }) => {
+        setIsSigninLoading(true)
         // validate signature via API to obtain session
         await signIn('credentials', {
           address: accountAddress,
@@ -41,10 +44,26 @@ export default function Web3LoginButton(props: Web3LoginButtonProps) {
   }, [wallet, accounts, props.message])
 
   const DefaultButton = (
-    <Button type='primary'>
+    <Button type='primary' loading={isSigninLoading}>
       Signin with Wallet
     </Button>
   )
+
+  if (session.status === 'authenticated') {
+    return (
+      <Button
+        type='primary'
+        danger
+        onClick={() => {
+          setIsSigninLoading(true)
+          signOut()
+        }}
+        loading={isSigninLoading}
+      >
+        Signout
+      </Button>
+    )
+  }
 
   return (
     <WalletSelect

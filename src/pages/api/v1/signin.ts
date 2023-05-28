@@ -12,6 +12,11 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) => {
+  // check if the method is valid
+  if (req.method !== 'POST') {
+    return res.status(405).end()
+  }
+
   const { message, signature, address } = req.body
 
   if (!message || !signature || !address) {
